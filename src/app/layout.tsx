@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/navbar';
-import PageTransition from './components/page-transition';
+import { ViewTransitions } from 'next-view-transitions';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -29,13 +29,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} *:font-sans antialiased`}
       >
-        <PageTransition>
+        <ViewTransitions>
           <Navbar />
           {children}
           <footer className="p-8">
-            <span className="opacity-70 text-center">2024 © Made by Quan</span>
+            <span className="opacity-70 text-center">2024 © Made by me</span>
           </footer>
-        </PageTransition>
+        </ViewTransitions>
       </body>
     </html>
   );

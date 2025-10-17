@@ -1,13 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import React from 'react';
+import { Link } from 'next-view-transitions';
 
 function Navbar() {
-  const pathname = usePathname();
-
   return (
     <nav className="top-0 z-10 fixed flex justify-between items-center bg-background p-6 w-full">
       <Link href={'/'}>
