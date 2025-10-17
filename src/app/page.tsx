@@ -2,8 +2,17 @@
 
 import Image from 'next/image';
 import WorkCard from './components/work-card';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 export default function Home() {
+  useGSAP(() => {
+    gsap.timeline().to('.gsap-title', {
+      color: 'white',
+      delay: 0.5,
+    });
+  });
+
   return (
     <main>
       {/* Hero */}
@@ -11,7 +20,7 @@ export default function Home() {
         <div className="top-1/2 left-1/2 z-[-1] absolute bg-foreground/5 rounded-lg size-[600px] aspect-square -translate-x-1/2 -translate-y-1/2"></div>
         <div className="font-black text-9xl uppercase leading-tight">
           <p>It's next.js</p>
-          <h1 className="text-stroke">It's next.js</h1>
+          <h1 className="text-stroke gsap-title">It's next.js</h1>
           <p>It's next.js</p>
         </div>
         <div className="right-6 bottom-6 absolute flex items-center gap-4 rotate-90 origin-bottom-right -translate-x-6">

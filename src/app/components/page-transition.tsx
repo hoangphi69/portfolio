@@ -1,10 +1,8 @@
 'use client';
 
 import gsap from 'gsap';
-import { DrawSVGPlugin } from 'gsap/all';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef } from 'react';
-import DynamicLogo from './DynamicLogo';
 
 export default function PageTransition({
   children,
@@ -19,42 +17,43 @@ export default function PageTransition({
   const isTransitioning = useRef(false);
 
   const cover = async (url: string) => {
-    if (!logoRef.current) return;
-    const path = logoRef.current.querySelector('path');
+    // if (!logoRef.current) return;
+    // const path = logoRef.current.querySelector('path');
 
-    gsap.registerPlugin(DrawSVGPlugin);
+    // gsap.registerPlugin(DrawSVGPlugin);
 
     await gsap
       .timeline()
       .set(overlayRef.current, {
-        display: 'flex',
+        display: 'grid',
       })
       .to(barsRef.current, {
-        scaleX: 1,
-        stagger: 0.02,
-        duration: 0.4,
-        transformOrigin: 'left',
-        ease: 'power4.out',
-      })
-      .set(path, {
-        drawSVG: '0%',
-        fill: 'transparent',
-      })
-      .to(logoRef.current, {
-        opacity: 1,
-      })
-      .to(path, {
-        drawSVG: '100%',
-        duration: 2,
-        ease: 'power1.inOut',
-      })
-      .to(path, {
-        fill: 'black',
-      })
-      .to(logoRef.current, {
-        opacity: 0,
-        delay: 0.2,
+        scaleY: 1,
+        // stagger: randomDelay(0.1, 0.2),
+        // delay: randomDelay(0.1, 0.2),
+        duration: randomDuration,
+        transformOrigin: 'top',
+        ease: 'power1.out',
       });
+    // .set(path, {
+    //   drawSVG: '0%',
+    //   fill: 'transparent',
+    // })
+    // .to(logoRef.current, {
+    //   opacity: 1,
+    // })
+    // .to(path, {
+    //   drawSVG: '100%',
+    //   duration: 2,
+    //   ease: 'power1.inOut',
+    // })
+    // .to(path, {
+    //   fill: 'black',
+    // })
+    // .to(logoRef.current, {
+    //   opacity: 0,
+    //   delay: 0.2,
+    // });
 
     router.push(url);
   };
@@ -62,17 +61,15 @@ export default function PageTransition({
   const reveal = async () => {
     await gsap
       .timeline()
-      .to(
-        barsRef.current,
-        {
-          scaleX: 0,
-          stagger: 0.02,
-          duration: 0.4,
-          transformOrigin: 'right',
-          ease: 'power4.out',
-        },
-        '>0.5'
-      )
+      .to(barsRef.current, {
+        scaleY: 0,
+        // stagger: randomDelay(0.1, 0.2),
+        // delay: randomDelay(0.1, 0.2),
+
+        duration: randomDuration,
+        transformOrigin: 'bottom',
+        ease: 'power4.out',
+      })
       .set(overlayRef.current, {
         display: 'none',
       });
@@ -112,26 +109,33 @@ export default function PageTransition({
     <>
       <div
         ref={overlayRef}
-        className="z-[9999] fixed inset-0 flex justify-center items-center"
+        className="z-[9999] fixed inset-0 justify-center items-center grid grid-cols-10"
       >
-        {[...Array(20)].map((_, i) => (
+        {[...Array(110)].map((_, i) => (
           <div
             key={i}
             ref={(el) => {
               if (el) barsRef.current[i] = el;
             }}
-            className="bg-foreground w-[10%] h-screen scale-x-0 pointer-events-none"
+            className="flex flex-col bg-foreground size-full scale-y-0 pointer-events-none"
           ></div>
         ))}
 
-        <div
+        {/* <div
           ref={logoRef}
           className="top-1/2 left-1/2 absolute opacity-0 -translate-x-1/2 -translate-y-1/2"
         >
           <DynamicLogo />
-        </div>
+        </div> */}
       </div>
       {children}
     </>
   );
+}
+
+function randomDuration(index: number) {
+  const columns = 10;
+  const delay = Math.random() * 0.5;
+  const rowIndex = Math.floor(index / columns);
+  return rowIndex * 0.05 + delay;
 }
