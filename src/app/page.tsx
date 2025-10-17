@@ -1,12 +1,13 @@
+'use client';
+
 import Image from 'next/image';
-import Navbar from './components/navbar';
 import WorkCard from './components/work-card';
 
 export default function Home() {
   return (
     <main>
       {/* Hero */}
-      <section className="content-center min-h-screen text-center">
+      <section className="relative content-center min-h-screen text-center">
         <div className="top-1/2 left-1/2 z-[-1] absolute bg-foreground/5 rounded-lg size-[600px] aspect-square -translate-x-1/2 -translate-y-1/2"></div>
         <div className="font-black text-9xl uppercase leading-tight">
           <p>It's next.js</p>
