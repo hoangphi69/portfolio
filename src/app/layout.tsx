@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/navbar';
 import PageTransition from './components/page-transition';
+import Footer from './components/footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,9 +33,7 @@ export default function RootLayout({
         <PageTransition>
           <Navbar />
           {children}
-          <footer className="p-8">
-            <span className="opacity-70 text-center">2024 © Made by Quan</span>
-          </footer>
+          <Footer />
         </PageTransition>
       </body>
     </html>

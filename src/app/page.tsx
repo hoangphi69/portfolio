@@ -1,27 +1,26 @@
 'use client';
 
+import ReactLenis from 'lenis/react';
 import Image from 'next/image';
+import TextReveal from './components/text-reveal';
 import WorkCard from './components/work-card';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 
 export default function Home() {
-  useGSAP(() => {
-    gsap.timeline().to('.gsap-title', {
-      color: 'white',
-      delay: 0.5,
-    });
-  });
-
   return (
     <main>
+      <ReactLenis root />
+
       {/* Hero */}
       <section className="relative content-center min-h-screen text-center">
         <div className="top-1/2 left-1/2 z-[-1] absolute bg-foreground/5 rounded-lg size-[600px] aspect-square -translate-x-1/2 -translate-y-1/2"></div>
         <div className="font-black text-9xl uppercase leading-tight">
-          <p>It's next.js</p>
-          <h1 className="text-stroke gsap-title">It's next.js</h1>
-          <p>It's next.js</p>
+          <TextReveal delay={0.1}>
+            <p className="gsap-title">It's next.js</p>
+            <h1 className="text-stroke will-change-auto gsap-title">
+              It's next.js
+            </h1>
+            <p className="gsap-title">It's next.js</p>
+          </TextReveal>
         </div>
         <div className="right-6 bottom-6 absolute flex items-center gap-4 rotate-90 origin-bottom-right -translate-x-6">
           <span>scroll</span>
@@ -31,17 +30,23 @@ export default function Home() {
 
       {/* Quote */}
       <section className="content-center space-y-12 p-12 min-h-screen">
-        <h2 className="opacity-70 uppercase">text placeholder</h2>
-        <p className="font-medium text-7xl leading-tight">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta harum
-          cupiditate deleniti voluptatibus inventore corporis praesentium esse
-          minima quia.
-        </p>
+        <TextReveal>
+          <h2 className="opacity-70 uppercase">text placeholder</h2>
+        </TextReveal>
+        <TextReveal>
+          <p className="font-medium text-7xl leading-tight">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+            harum cupiditate deleniti voluptatibus inventore corporis
+            praesentium esse minima quia.
+          </p>
+        </TextReveal>
       </section>
 
       {/* About */}
       <section className="content-center space-y-12 p-12 min-h-screen">
-        <h2 className="opacity-70 uppercase">about this</h2>
+        <TextReveal>
+          <h2 className="opacity-70 uppercase">about this</h2>
+        </TextReveal>
         <div className="gap-12 grid grid-cols-2">
           <Image
             src="https://picsum.photos/200/300"
@@ -52,65 +57,77 @@ export default function Home() {
             priority
           />
           <div className="space-y-12">
-            <p className="font-medium text-6xl">
-              A brief description about the subject.
-            </p>
-            <p className="opacity-85 text-xl leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Recusandae, rem beatae? Esse dolores veniam sit nisi itaque
-              aliquam doloribus beatae voluptatem. Dolor voluptatibus velit odio
-              officia, animi aperiam nobis suscipit?
-            </p>
-            <p className="opacity-85 text-xl leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Recusandae, rem beatae? Esse dolores veniam sit nisi itaque
-              aliquam doloribus beatae voluptatem. Dolor voluptatibus velit odio
-              officia, animi aperiam nobis suscipit?
-            </p>
+            <TextReveal>
+              <p className="font-medium text-6xl">
+                A brief description about the subject.
+              </p>
+              <p className="opacity-85 text-xl leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Recusandae, rem beatae? Esse dolores veniam sit nisi itaque
+                aliquam doloribus beatae voluptatem. Dolor voluptatibus velit
+                odio officia, animi aperiam nobis suscipit?
+              </p>
+              <p className="opacity-85 text-xl leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Recusandae, rem beatae? Esse dolores veniam sit nisi itaque
+                aliquam doloribus beatae voluptatem. Dolor voluptatibus velit
+                odio officia, animi aperiam nobis suscipit?
+              </p>
+            </TextReveal>
           </div>
         </div>
       </section>
 
       {/* Skills */}
       <section className="content-center space-y-12 p-12 min-h-screen">
-        <h2 className="opacity-70 uppercase">more text</h2>
+        <TextReveal>
+          <h2 className="opacity-70 uppercase">more text</h2>
+        </TextReveal>
         <div className="gap-12 grid grid-cols-2">
           <div className="space-y-4">
-            <p className="font-medium text-5xl">first subject</p>
-            <p className="opacity-85 max-w-[45ch] text-lg leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Recusandae, rem beatae? Esse dolores veniam sit nisi itaque
-              aliquam doloribus beatae voluptatem. Dolor voluptatibus velit odio
-              officia, animi aperiam nobis suscipit?
-            </p>
+            <TextReveal>
+              <p className="font-medium text-5xl">first subject</p>
+              <p className="opacity-85 max-w-[45ch] text-lg leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Recusandae, rem beatae? Esse dolores veniam sit nisi itaque
+                aliquam doloribus beatae voluptatem. Dolor voluptatibus velit
+                odio officia, animi aperiam nobis suscipit?
+              </p>
+            </TextReveal>
           </div>
           <ul className="opacity-70 font-semibold text-6xl">
-            <li>Web development</li>
-            <li>Web design</li>
-            <li>Wireframing</li>
-            <li>UI/UX design</li>
-            <li>Branding</li>
+            <TextReveal delay={0.1}>
+              <li>Web development</li>
+              <li>Web design</li>
+              <li>Wireframing</li>
+              <li>UI/UX design</li>
+              <li>Branding</li>
+            </TextReveal>
           </ul>
         </div>
         <div className="gap-12 grid grid-cols-2">
           <div className="space-y-4">
-            <p className="font-medium text-5xl">second subject</p>
-            <p className="opacity-85 max-w-[45ch] text-lg leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Recusandae, rem beatae? Esse dolores veniam sit nisi itaque
-              aliquam doloribus beatae voluptatem. Dolor voluptatibus velit odio
-              officia, animi aperiam nobis suscipit?
-            </p>
+            <TextReveal>
+              <p className="font-medium text-5xl">second subject</p>
+              <p className="opacity-85 max-w-[45ch] text-lg leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Recusandae, rem beatae? Esse dolores veniam sit nisi itaque
+                aliquam doloribus beatae voluptatem. Dolor voluptatibus velit
+                odio officia, animi aperiam nobis suscipit?
+              </p>
+            </TextReveal>
           </div>
           <ul className="opacity-70 font-semibold text-6xl">
-            <li>Javascript</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Figma</li>
-            <li>Webflow</li>
-            <li>GSAP</li>
-            <li>TailwindCSS</li>
-            <li>ReactJS</li>
+            <TextReveal delay={0.1}>
+              <li>Javascript</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Figma</li>
+              <li>Webflow</li>
+              <li>GSAP</li>
+              <li>TailwindCSS</li>
+              <li>ReactJS</li>
+            </TextReveal>
           </ul>
         </div>
       </section>
@@ -120,7 +137,9 @@ export default function Home() {
         id="works"
         className="content-center space-y-12 p-12 min-h-screen scroll-mt-20"
       >
-        <h2 className="opacity-70 uppercase">works display</h2>
+        <TextReveal>
+          <h2 className="opacity-70 uppercase">works display</h2>
+        </TextReveal>
         <div className="space-y-24">
           <WorkCard
             title="Project Title"
@@ -180,15 +199,19 @@ export default function Home() {
 
       {/* Contact */}
       <section className="content-center space-y-12 p-12 min-h-screen">
-        <h2 className="opacity-70 uppercase">contact me</h2>
+        <TextReveal>
+          <h2 className="opacity-70 uppercase">contact me</h2>
+        </TextReveal>
         <div className="gap-12 grid grid-cols-[2fr_1fr]">
           <div className="space-y-8">
-            <header className="space-y-4">
-              <p className="font-medium text-5xl">Call me maybe?</p>
-              <p className="opacity-80 max-w-[45ch] text-lg leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              </p>
-            </header>
+            <TextReveal>
+              <header className="space-y-4">
+                <p className="font-medium text-5xl">Call me maybe?</p>
+                <p className="opacity-80 max-w-[45ch] text-lg leading-relaxed">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </p>
+              </header>
+            </TextReveal>
 
             <div className="gap-8 grid grid-cols-2">
               <input
@@ -215,31 +238,45 @@ export default function Home() {
           <div className="space-y-12">
             <div>
               <header>
-                <h3 className="mb-4 font-medium text-3xl">Contact details</h3>
+                <TextReveal>
+                  <h3 className="mb-4 font-medium text-3xl">Contact details</h3>
+                </TextReveal>
               </header>
               <ul className="opacity-70 text-lg">
-                <li>tranvanquan.dev@gmail.com</li>
-                <li>+84 123 456 789</li>
+                <TextReveal delay={0.1}>
+                  <li>tranvanquan.dev@gmail.com</li>
+                  <li>+84 123 456 789</li>
+                </TextReveal>
               </ul>
             </div>
             <div>
               <header>
-                <h3 className="mb-4 font-medium text-3xl">Digital workspace</h3>
+                <TextReveal>
+                  <h3 className="mb-4 font-medium text-3xl">
+                    Digital workspace
+                  </h3>
+                </TextReveal>
               </header>
               <ul className="opacity-70 text-lg">
-                <li>Bento</li>
-                <li>Github</li>
-                <li>Linkedln</li>
-                <li>Youtube</li>
+                <TextReveal delay={0.1}>
+                  <li>Bento</li>
+                  <li>Github</li>
+                  <li>Linkedln</li>
+                  <li>Youtube</li>
+                </TextReveal>
               </ul>
             </div>
             <div>
               <header>
-                <h3 className="mb-4 font-medium text-3xl">Location</h3>
+                <TextReveal>
+                  <h3 className="mb-4 font-medium text-3xl">Location</h3>
+                </TextReveal>
               </header>
               <ul className="opacity-70 text-lg">
-                <li>Saigon, Vietnam</li>
-                <li>23:59:59 AM</li>
+                <TextReveal delay={0.1}>
+                  <li>Saigon, Vietnam</li>
+                  <li>23:59:59 AM</li>
+                </TextReveal>
               </ul>
             </div>
           </div>

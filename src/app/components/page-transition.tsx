@@ -17,11 +17,6 @@ export default function PageTransition({
   const isTransitioning = useRef(false);
 
   const cover = async (url: string) => {
-    // if (!logoRef.current) return;
-    // const path = logoRef.current.querySelector('path');
-
-    // gsap.registerPlugin(DrawSVGPlugin);
-
     await gsap
       .timeline()
       .set(overlayRef.current, {
@@ -35,25 +30,6 @@ export default function PageTransition({
         transformOrigin: 'top',
         ease: 'power1.out',
       });
-    // .set(path, {
-    //   drawSVG: '0%',
-    //   fill: 'transparent',
-    // })
-    // .to(logoRef.current, {
-    //   opacity: 1,
-    // })
-    // .to(path, {
-    //   drawSVG: '100%',
-    //   duration: 2,
-    //   ease: 'power1.inOut',
-    // })
-    // .to(path, {
-    //   fill: 'black',
-    // })
-    // .to(logoRef.current, {
-    //   opacity: 0,
-    //   delay: 0.2,
-    // });
 
     router.push(url);
   };
@@ -63,9 +39,6 @@ export default function PageTransition({
       .timeline()
       .to(barsRef.current, {
         scaleY: 0,
-        // stagger: randomDelay(0.1, 0.2),
-        // delay: randomDelay(0.1, 0.2),
-
         duration: randomDuration,
         transformOrigin: 'bottom',
         ease: 'power4.out',
@@ -120,13 +93,6 @@ export default function PageTransition({
             className="flex flex-col bg-foreground size-full scale-y-0 pointer-events-none"
           ></div>
         ))}
-
-        {/* <div
-          ref={logoRef}
-          className="top-1/2 left-1/2 absolute opacity-0 -translate-x-1/2 -translate-y-1/2"
-        >
-          <DynamicLogo />
-        </div> */}
       </div>
       {children}
     </>

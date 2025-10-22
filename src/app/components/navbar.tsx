@@ -26,6 +26,9 @@ function Navbar() {
         <Link href="/other">other</Link>
         <Link href="/another">another</Link>
         <button className="bg-foreground px-6 py-2 rounded-full text-background">
+          Theme
+        </button>
+        <button className="bg-foreground px-6 py-2 rounded-full text-background">
           Let's talk.
         </button>
       </div>
