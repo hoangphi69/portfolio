@@ -1,17 +1,44 @@
 'use client';
 
-import ReactLenis from 'lenis/react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 import Image from 'next/image';
 import TextReveal from './components/text-reveal';
 import WorkCard from './components/work-card';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Home() {
+  const setTheme = (theme: string) => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+
+  useGSAP(() => {
+    const sections = document.querySelectorAll('[data-theme]');
+    sections.forEach((section) => {
+      const theme = section.getAttribute('data-theme');
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 50%',
+        end: 'bottom 50%',
+        onToggle: (self) => self.isActive && setTheme(theme || ''),
+      });
+    });
+  });
+
   return (
     <main>
-      <ReactLenis root />
-
       {/* Hero */}
-      <section className="relative content-center min-h-screen text-center">
+      <section
+        id="hero"
+        data-theme="dark"
+        className="relative content-center min-h-screen text-center"
+      >
         <div className="top-1/2 left-1/2 z-[-1] absolute bg-foreground/5 rounded-lg size-[600px] aspect-square -translate-x-1/2 -translate-y-1/2"></div>
         <div className="font-black text-9xl uppercase leading-tight">
           <TextReveal delay={0.1}>
@@ -29,7 +56,11 @@ export default function Home() {
       </section>
 
       {/* Quote */}
-      <section className="content-center space-y-12 p-12 min-h-screen">
+      <section
+        id="quote"
+        data-theme="dark"
+        className="content-center space-y-12 p-12 min-h-screen"
+      >
         <TextReveal>
           <h2 className="opacity-70 uppercase">text placeholder</h2>
         </TextReveal>
@@ -43,7 +74,11 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section className="content-center space-y-12 p-12 min-h-screen">
+      <section
+        id="about"
+        data-theme="light"
+        className="content-center space-y-12 p-12 min-h-screen"
+      >
         <TextReveal>
           <h2 className="opacity-70 uppercase">about this</h2>
         </TextReveal>
@@ -56,7 +91,7 @@ export default function Home() {
             height={300}
             priority
           />
-          <div className="space-y-12">
+          <div className="top-24 sticky self-start space-y-12">
             <TextReveal>
               <p className="font-medium text-6xl">
                 A brief description about the subject.
@@ -79,7 +114,11 @@ export default function Home() {
       </section>
 
       {/* Skills */}
-      <section className="content-center space-y-12 p-12 min-h-screen">
+      <section
+        id="skills"
+        data-theme="light"
+        className="content-center space-y-12 p-12 min-h-screen"
+      >
         <TextReveal>
           <h2 className="opacity-70 uppercase">more text</h2>
         </TextReveal>
@@ -135,6 +174,7 @@ export default function Home() {
       {/* Works */}
       <section
         id="works"
+        data-theme="dark"
         className="content-center space-y-12 p-12 min-h-screen scroll-mt-20"
       >
         <TextReveal>
@@ -198,7 +238,11 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section className="content-center space-y-12 p-12 min-h-screen">
+      <section
+        id="contact"
+        data-theme="light"
+        className="content-center space-y-12 p-12 min-h-screen"
+      >
         <TextReveal>
           <h2 className="opacity-70 uppercase">contact me</h2>
         </TextReveal>
@@ -231,7 +275,7 @@ export default function Home() {
               ></textarea>
             </div>
 
-            <button className="bg-foreground px-6 py-2 rounded-full text-background">
+            <button className="bg-foreground px-6 py-2 rounded-full text-background button">
               Send message
             </button>
           </div>

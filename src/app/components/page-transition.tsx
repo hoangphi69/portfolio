@@ -11,7 +11,6 @@ export default function PageTransition({
 }) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const barsRef = useRef<HTMLDivElement[]>([]);
-  const logoRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const pathname = usePathname();
   const isTransitioning = useRef(false);
@@ -24,8 +23,6 @@ export default function PageTransition({
       })
       .to(barsRef.current, {
         scaleY: 1,
-        // stagger: randomDelay(0.1, 0.2),
-        // delay: randomDelay(0.1, 0.2),
         duration: randomDuration,
         transformOrigin: 'top',
         ease: 'power1.out',

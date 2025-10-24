@@ -22,7 +22,7 @@ function WorkCard({
     <div className="group space-y-4">
       <div className="rounded-lg group-hover:rounded-4xl w-full overflow-hidden transition-all duration-300">
         <Image
-          className="size-full object-cover scale-105 group-hover:scale-100 transition-transform duration-300"
+          className="size-full object-cover scale-101 group-hover:scale-100 transition-transform duration-300"
           src={src}
           width={width}
           height={height}

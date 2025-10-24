@@ -1,9 +1,10 @@
+import ReactLenis from 'lenis/react';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
+import Footer from './components/footer';
 import Navbar from './components/navbar';
 import PageTransition from './components/page-transition';
-import Footer from './components/footer';
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} *:font-sans antialiased`}
       >
+        <ReactLenis root />
         <PageTransition>
           <Navbar />
           {children}
