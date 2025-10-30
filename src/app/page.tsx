@@ -62,10 +62,12 @@ export default function Home() {
         className="content-center space-y-12 p-12 min-h-screen"
       >
         <TextReveal>
-          <h2 className="opacity-70 uppercase">text placeholder</h2>
+          <h2 data-cursor="caret" className="opacity-70 uppercase">
+            text placeholder
+          </h2>
         </TextReveal>
         <TextReveal>
-          <p className="font-medium text-7xl leading-tight">
+          <p data-cursor="caret" className="font-medium text-7xl leading-tight">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
             harum cupiditate deleniti voluptatibus inventore corporis
             praesentium esse minima quia.
@@ -275,7 +277,11 @@ export default function Home() {
               ></textarea>
             </div>
 
-            <button className="bg-foreground px-6 py-2 rounded-full text-background button">
+            <button
+              data-cursor="morph"
+              data-cursor-magnetic
+              className="bg-foreground px-6 py-2 rounded-full text-background button"
+            >
               Send message
             </button>
           </div>

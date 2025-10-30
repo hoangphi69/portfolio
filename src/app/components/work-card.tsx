@@ -19,7 +19,7 @@ function WorkCard({
   height: number;
 }) {
   return (
-    <div className="group space-y-4">
+    <div data-cursor="link" className="group space-y-4">
       <div className="rounded-lg group-hover:rounded-4xl w-full overflow-hidden transition-all duration-300">
         <Image
           className="size-full object-cover scale-101 group-hover:scale-100 transition-transform duration-300"

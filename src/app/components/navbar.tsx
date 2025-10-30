@@ -17,17 +17,36 @@ function Navbar() {
         />
       </Link>
 
-      <div className="flex items-center gap-8">
-        <Link href="/#works">projects</Link>
-        <Link href="/other">other</Link>
-        <Link href="/another">another</Link>
-        {/* <button
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          className="bg-foreground px-6 py-2 rounded-full text-background button"
+      <div className="flex items-center">
+        <Link
+          data-cursor="morph"
+          data-cursor-magnetic
+          className="px-6 py-2"
+          href="/#works"
         >
-          Theme
-        </button> */}
-        <button className="bg-foreground px-6 py-2 rounded-full text-background button">
+          projects
+        </Link>
+        <Link
+          data-cursor="morph"
+          data-cursor-magnetic
+          className="px-6 py-2"
+          href="/other"
+        >
+          other
+        </Link>
+        <Link
+          data-cursor="morph"
+          data-cursor-magnetic
+          className="px-6 py-2"
+          href="/another"
+        >
+          another
+        </Link>
+        <button
+          data-cursor="morph"
+          data-cursor-magnetic
+          className="bg-foreground ml-2 px-6 py-2 rounded-full text-background button"
+        >
           Let's talk.
         </button>
       </div>

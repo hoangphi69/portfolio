@@ -5,6 +5,7 @@ import Footer from './components/footer';
 import Navbar from './components/navbar';
 import PageTransition from './components/page-transition';
 import './globals.css';
+import Cursor from './components/cursor';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,6 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} *:font-sans antialiased`}
       >
         <ReactLenis root />
+        <Cursor />
         <PageTransition>
           <Navbar />
           {children}
